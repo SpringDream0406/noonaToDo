@@ -12,6 +12,7 @@
 
 let taskInput = document.getElementById("task-input");
 let tabs = document.querySelectorAll(".task-tabs div")
+let underLine = document.getElementById("under-line");
 let addBtn = document.getElementById("add-btn");
 let taskList = [];
 let filterList = [];
@@ -19,10 +20,16 @@ let mode = "all";
 let finalList = [];
 
 addBtn.addEventListener("click", addTask);
+taskInput.addEventListener("keydown", function (e) {
+    if (e.key == "Enter") {
+        addTask();
+    }
+})
+
 
 for (let i = 1; i < tabs.length; i++) {
-    tabs[i].addEventListener("click", function (event) {
-        filter(event)
+    tabs[i].addEventListener("click", function (e) {
+        filter(e)
     })
 }
 
@@ -33,9 +40,8 @@ function addTask() {
         isComplete: false
     }
     taskList.push(task);
-    render();
+    filter();
     taskInput.value = "";
-    console.log(taskList);
 }
 
 function render() {
@@ -72,21 +78,26 @@ function toggleComplete(id) {
             break;
         }
     }
-    render();
-    console.log(taskList);
+    filter();
 }
 
 function deleteTask(id) {
-    for (let i = 0; i < finalList.length; i++) {
-        if (finalList[i].id == id) {
-            finalList.splice(i, 1);
+    for (let i = 0; i < taskList.length; i++) {
+        if (taskList[i].id == id) {
+            taskList.splice(i, 1);
         }
     }
-    render();
+    filter();
 }
 
-function filter(event) {
-    mode = event.target.id;
+function filter(e) {
+    if (e) {
+        mode = e.target.id;
+        underLine.style.width = e.target.offsetWidth + "px";
+        underLine.style.left = e.target.offsetLeft + "px";
+        underLine.style.top =
+            e.target.offsetTop + (e.target.offsetHeight - 4) + "px";
+    }
     filterList = [];
     if (mode === "all") {
         // 전체리스트
