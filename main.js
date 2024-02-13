@@ -46,23 +46,21 @@ function addTask() {
 
 function render() {
     let resultHTML = ``;
-    finalList = [];
-    mode == "all" ? finalList = taskList : finalList = filterList;
-    for (let task of finalList) {
+    for (let task of filterList) {
         if (task.isComplete == true) {
             resultHTML += `<div class="task">
             <div class="task-done">${task.taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${task.id}')"><i class="fa-solid fa-rotate-left"></i></button>
-                <button onclick="deleteTask('${task.id}')"><i class="fa-regular fa-trash-can"></i></button>
+                <button onclick="toggleComplete('${task.id}')"><i class="fa-solid fa-rotate-left fa-lg"></i></button>
+                <button onclick="deleteTask('${task.id}')"><i class="fa-regular fa-trash-can fa-xl"></i></button>
             </div>
         </div>`;
         } else {
             resultHTML += `<div class="task">
                     <div>${task.taskContent}</div>
                     <div>
-                        <button onclick="toggleComplete('${task.id}')"><i class="fa-regular fa-square-check"></i></button>
-                        <button onclick="deleteTask('${task.id}')"><i class="fa-regular fa-trash-can"></i></button>
+                        <button onclick="toggleComplete('${task.id}')"><i class="fa-regular fa-square-check fa-xl"></i></button>
+                        <button onclick="deleteTask('${task.id}')"><i class="fa-regular fa-trash-can fa-xl"></i></button>
                     </div>
                 </div>`;
         }

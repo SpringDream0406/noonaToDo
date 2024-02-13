@@ -38,7 +38,8 @@ body {
 .task{
     display: flex;
     justify-content: space-between;
-    padding: 1px;
+    padding: 2px;
+    border: 0.5px solid;
 }
 
 .task-done{
@@ -51,4 +52,9 @@ body {
 
 .task-tabs div{
     cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    border: none;
 }
