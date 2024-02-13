@@ -38,5 +38,17 @@ body {
 .task{
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1px;
+}
+
+.task-done{
+    text-decoration: line-through;
+    background-color: lightgray;
+    flex-grow: 1;
+    padding-right: 1em;
+    margin-right: 1px;
+}
+
+.task-tabs div{
+    cursor: pointer;
 }
