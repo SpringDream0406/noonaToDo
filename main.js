@@ -11,7 +11,10 @@ let filterList = [];
 let mode = "ing";
 
 changeBackGroundImage(2);
-changeBackGroundImage(0);
+setTimeout(()=>{
+    changeBackGroundImage(0);
+},300)
+
 
 for (let i = 1; i < tabs.length; i++) {
     tabs[i].addEventListener("click", (e) => {
@@ -52,7 +55,7 @@ function addTask() {
         setTimeout(function () {
             filter();
             changeBackGroundImage(0);
-        }, 300);
+        }, 350);
 
     }
 }
