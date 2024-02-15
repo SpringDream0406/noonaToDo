@@ -10,6 +10,8 @@ let nowBackGround = backgroundImg[0];
 let filterList = [];
 let mode = "ing";
 
+changeBackGroundImage(2);
+changeBackGroundImage(0);
 
 for (let i = 1; i < tabs.length; i++) {
     tabs[i].addEventListener("click", (e) => {
@@ -153,6 +155,3 @@ function changeBackGroundImage(index) {
 function randomIDGenerate() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
-
-
-// 클론코딩이랑 내가 한거랑 페이지 나누기
