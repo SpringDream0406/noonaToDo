@@ -1,9 +1,11 @@
-[To Do List](https://noonatodo.netlify.app/)
-<hr>
+# To Do List
+
 ![ezgif com-video-to-gif-converter](https://github.com/SpringDream0406/noonaToDo/assets/150095756/32423a85-551d-4998-a16b-43e13533c9ee)
-
-
 <hr>
+
+🕹️ 데모 : [To Do List](https://noonatodo.netlify.app/)
+<hr>
+
 
 # 기능
 - 유저는 할일을 추가할 수 있다
