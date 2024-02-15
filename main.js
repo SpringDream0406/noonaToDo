@@ -11,7 +11,6 @@ let filterList = [];
 let mode = "ing";
 
 
-
 for (let i = 1; i < tabs.length; i++) {
     tabs[i].addEventListener("click", (e) => {
         filter(e)
@@ -23,6 +22,7 @@ taskInput.addEventListener("keypress", (e) => {
         addTask();
     }
 })
+
 addBtn.addEventListener("click", () => {
     addBtn.disabled = true;
     addTask();
@@ -30,6 +30,56 @@ addBtn.addEventListener("click", () => {
         addBtn.disabled = false;
     }, 300);
 });
+
+
+
+function addTask() {
+    if (taskInput.value == "") {
+        return;
+    }
+    let task = {
+        id: randomIDGenerate(),
+        taskContent: taskInput.value,
+        isComplete: false,
+    }
+    taskList.push(task);
+    taskInput.value = "";
+
+    if (nowBackGround == backgroundImg[0]) {
+        changeBackGroundImage(2);
+        setTimeout(function () {
+            filter();
+            changeBackGroundImage(0);
+        }, 300);
+
+    }
+}
+
+
+function taskComplete(id) {
+    for (let task of taskList) {
+        if (task.id == id) {
+            task.isComplete = !task.isComplete;
+            break;
+        }
+    }
+    filter();
+}
+
+
+function taskDelete(id) {
+    let confirmDelete = confirm("정말 삭제하시겠습니까?");
+
+    if (confirmDelete) {
+        for (let i = 0; i < taskList.length; i++) {
+            if (taskList[i].id == id) {
+                taskList.splice(i, 1);
+                break;
+            }
+        }
+        filter();
+    }
+}
 
 function filter(e) {
     if (e) {
@@ -94,47 +144,6 @@ function render() {
     taskBoard.innerHTML = resultHTML;
 }
 
-function taskDelete(id) {
-    for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].id == id) {
-            taskList.splice(i, 1);
-            break;
-        }
-    }
-    filter();
-}
-
-function taskComplete(id) {
-    for (let task of taskList) {
-        if (task.id == id) {
-            task.isComplete = !task.isComplete;
-            break;
-        }
-    }
-    filter();
-}
-
-function addTask() {
-    if (taskInput.value == "") {
-        return;
-    }
-    let task = {
-        id: randomIDGenerate(),
-        taskContent: taskInput.value,
-        isComplete: false,
-    }
-    taskList.push(task);
-    taskInput.value = "";
-
-    if (nowBackGround == backgroundImg[0]) {
-        changeBackGroundImage(2);
-        setTimeout(function () {
-            filter();
-            changeBackGroundImage(0);
-        }, 300);
-
-    }
-}
 
 function changeBackGroundImage(index) {
     nowBackGround = backgroundImg[index];
