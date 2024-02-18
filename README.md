@@ -19,6 +19,7 @@
 # 사용한 기술
 - HTML/CSS
 - JavaScript
+<hr>
 
 
 💭 생각/후기 : [Blog](https://springdream0406.tistory.com/15)
